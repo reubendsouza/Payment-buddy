@@ -19,6 +19,15 @@ model User {
   name  String?
   number String @unique
   password String 
+  Balance Balance[]
+}
+
+model Balance {
+  id Int @id @default(autoincrement())
+  userId Int @unique
+  user User @relation(fields: [userId], references: [id])
+  amount Int
+  locked Int
 }
 
 enum AuthType {
