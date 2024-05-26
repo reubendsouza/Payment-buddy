@@ -5,8 +5,8 @@ interface TopbarProps {
     name?: string | null;
   };
   balance: number;
-  onSignout: any;
-  onSignin: any;
+  onSignout: () => void | Promise<void>;
+  onSignin: () => void | Promise<void>;
 }
 
 export const Topbar = ({ user, balance, onSignout, onSignin }: TopbarProps) => {

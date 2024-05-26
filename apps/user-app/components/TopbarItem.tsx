@@ -1,7 +1,6 @@
 "use client";
 
 import { Topbar } from "@repo/ui/topbar";
-import { useBalance } from "@repo/store/usebalance";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
@@ -9,13 +8,13 @@ export function TopbarItem() {
   const session = useSession();
   const router = useRouter();
 
-  const balance = useBalance();
-
+  const balance = { amount: 34 };
+  console.log("balance: ", balance);
   return (
     <div>
       <Topbar
         user={session.data?.user}
-        balance={balance}
+        balance={balance.amount}
         onSignin={signIn}
         onSignout={async () => {
           await signOut();

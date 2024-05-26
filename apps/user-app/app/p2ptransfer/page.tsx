@@ -1,3 +1,10 @@
+"use client";
+import { SendAmountItem } from "../../components/SendAmountItem";
+
 export default function () {
-  return <div>P2P transfer</div>;
+  return (
+    <div>
+      <SendAmountItem />
+    </div>
+  );
 }

@@ -28,15 +28,15 @@ export async function p2pTransfer(transferTo: string, amount: number) {
     if ((fromUserBalance?.amount ?? 0) < amount) {
       throw new Error("Low balance");
     }
-
     await Promise.all([
       prisma.balance.update({
         where: { userId: Number(transferFrom) },
         data: { amount: { decrement: amount } },
       }),
-      prisma.balance.update({
+      prisma.balance.upsert({
         where: { userId: transferToUser.id },
-        data: { amount: { increment: amount } },
+        update: { amount: { increment: amount } },
+        create: { userId: transferToUser.id, amount, locked: 0 },
       }),
     ]);
   } catch (err) {
