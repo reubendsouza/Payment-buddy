@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Providers } from "../providers";
+import { TopbarItem } from "../components/TopbarItem";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Providers>
+        <TopbarItem />
         <body className={inter.className}>{children}</body>
       </Providers>
     </html>
